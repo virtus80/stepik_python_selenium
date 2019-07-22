@@ -1,5 +1,6 @@
 import pytest
 
+from page_object.pages.cart_page import CartPage
 from page_object.pages.login_page import LoginPage
 from page_object.pages.product_page import ProductPage
 
@@ -45,3 +46,12 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
     login_page = LoginPage(browser, browser.current_url)
     login_page.should_be_login_page()
     page.should_be_login_link()
+
+def test_guest_cant_see_product_in_cart_opened_from_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    page = ProductPage(browser, link)
+    page.open()
+    page.go_to_cart_page()
+    cart_page = CartPage(browser, browser.current_url)
+    cart_page.should_not_be_products_in_basket()
+    cart_page.should_be_message_empty_basket()
