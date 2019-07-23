@@ -1,5 +1,4 @@
 import pytest
-from selenium import webdriver
 
 
 @pytest.mark.parametrize('language', ["ru", "en-gb"])

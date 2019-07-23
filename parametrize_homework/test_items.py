@@ -1,5 +1,3 @@
-import time
-
 link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
 
 def test_button_display_for_different_languages(browser):
